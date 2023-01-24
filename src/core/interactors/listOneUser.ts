@@ -2,7 +2,7 @@ import { GenericRepository } from '../interfaces/generic.repo';
 import { IUser } from '../interfaces/user.interface';
 import validator from 'validator';
 
-export default function listOneFactory(userDB: GenericRepository<IUser>) {
+export default function listOneUserFactory(userDB: GenericRepository<IUser>) {
     return async function (id: string) {
         if (!id) {
             throw new Error('User Id is missing');
