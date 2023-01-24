@@ -1,18 +1,21 @@
-import { IUserInputData, IUserEntity } from '../interfaces/user.interface';
+import {
+    IUserInputData,
+    IUserEntity,
+    IUserHelperFunctions,
+} from '../interfaces/user.interface';
 
 export class User {
-    // TODO: Fix sanitize and streamkey types
-    private sanitize: Function;
-    private createStreamKey: Function;
-    private detectSpecialCharacters: Function;
-    private emailValidator: Function;
+    private sanitize: (str: string) => string;
+    private createStreamKey: () => string;
+    private detectSpecialCharacters: (str: string) => boolean;
+    private emailValidator: (email: string) => boolean;
 
-    constructor(
-        sanitize: Function,
-        createStreamKey: Function,
-        detectSpecialCharacters: Function,
-        emailValidator: Function
-    ) {
+    constructor({
+        sanitize,
+        createStreamKey,
+        detectSpecialCharacters,
+        emailValidator,
+    }: IUserHelperFunctions) {
         this.sanitize = sanitize;
         this.createStreamKey = createStreamKey;
         this.detectSpecialCharacters = detectSpecialCharacters;
