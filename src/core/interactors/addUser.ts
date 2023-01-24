@@ -1,7 +1,7 @@
 import { IUserInputData, IUser } from '../interfaces/user.interface';
 import { GenericRepository } from '../interfaces/generic.repo';
 import { IHashService } from 'services/hashService.interface';
-import { userFactory } from '../entities';
+import { userFactory } from '../entities/index';
 
 export default function addUserFactory(
     userDB: GenericRepository<IUser>,
