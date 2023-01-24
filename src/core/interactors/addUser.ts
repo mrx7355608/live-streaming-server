@@ -8,13 +8,13 @@ export default function addUserFactory(
     hashService: IHashService
 ) {
     return async function (userData: IUserInputData) {
-        if (!userData) {
+        if (!userData || Object.keys(userData).length < 1) {
             throw new Error('User data is missing');
         }
 
         const userExists = await userDB.findOne(userData.email);
         if (userExists) {
-            throw new Error('User is alreday registered');
+            throw new Error('User is already registered');
         }
 
         const user = userFactory.make(userData);
