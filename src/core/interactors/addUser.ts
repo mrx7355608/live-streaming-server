@@ -12,7 +12,7 @@ export default function addUserFactory(
             throw new Error('User data is missing');
         }
 
-        const userExists = await userDB.findOne(userData.email);
+        const userExists = await userDB.findOne({ email: userData.email });
         if (userExists) {
             throw new Error('User is already registered');
         }

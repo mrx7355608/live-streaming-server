@@ -15,7 +15,7 @@ export class MockUserDB implements GenericRepository<IMockUser> {
         const user = users.filter((usr) => usr._id === id)[0];
         return user;
     }
-    async findOne(email: string): Promise<IMockUser> {
+    async findOne({ email }: { email: string }): Promise<IMockUser> {
         const user = users.filter((usr) => usr.email === email)[0];
         return user;
     }
