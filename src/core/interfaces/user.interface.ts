@@ -7,11 +7,14 @@ export interface IUser {
     isVerified: boolean;
     streamKey: string;
     createdAt: Date;
+}
+
+export interface IUserEntity extends IUser {
     verifyUser(): void;
     makeAdmin(): void;
 }
 
-export interface IUserData {
+export interface IUserInputData {
     fname: string;
     lname: string;
     email: string;

@@ -1,6 +1,6 @@
-import { IUser, IUserData } from '../interfaces/user.interface';
+import { IUserInputData, IUserEntity } from '../interfaces/user.interface';
 
-class User {
+export class User {
     // TODO: Fix sanitize and streamkey types
     private sanitize: Function;
     private createStreamKey: Function;
@@ -19,7 +19,7 @@ class User {
         this.emailValidator = emailValidator;
     }
 
-    public make(userData: IUserData): IUser {
+    public make(userData: IUserInputData): IUserEntity {
         let { fname, lname, email, password, confirmPassword } = userData;
         // sanitize input
         fname = this.sanitize(fname);
