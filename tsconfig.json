@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-	    "types": ["node", "jest"],
+        "types": ["node", "jest"],
         "target": "es2016",
         "module": "commonjs",
         "baseUrl": "./src",

@@ -1,6 +1,6 @@
 import addUserFactory from './addUser';
-import { MockUserDB } from './mockUserDB';
-import { MockHashService } from './mockHashService';
+import { MockUserDB } from '../../../tests/mocks/mockUserDB';
+import { MockHashService } from '../../../tests/mocks/mockHashService';
 import { IUserInputData } from '../interfaces/user.interface';
 
 const userDB = new MockUserDB();
