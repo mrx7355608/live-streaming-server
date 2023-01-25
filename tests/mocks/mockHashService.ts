@@ -1,4 +1,4 @@
-import { IHashService } from 'services/hashService.interface';
+import { IHashService } from '../../src/services/hashService.interface';
 
 export class MockHashService implements IHashService {
     async hash(str: string): Promise<string> {
