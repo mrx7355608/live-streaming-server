@@ -24,18 +24,20 @@ export class User {
 
     public make(userData: IUserInputData): IUserEntity {
         let { fname, lname, email, password, confirmPassword } = userData;
-        // sanitize input
-        fname = this.sanitize(fname);
-        lname = this.sanitize(lname);
-        password = this.sanitize(password);
-        confirmPassword = this.sanitize(confirmPassword);
 
-        // validate input
         this.validateName(fname, 'First');
+        fname = this.sanitize(fname);
+
         this.validateName(lname, 'Last');
+        lname = this.sanitize(lname);
+
         this.validateEmail(email);
+
         this.validatePassword(password);
+        password = this.sanitize(password);
+
         this.validateConfirmPassword(password, confirmPassword);
+        confirmPassword = this.sanitize(confirmPassword);
 
         let role = 'user';
         let isVerified = false;
@@ -64,6 +66,9 @@ export class User {
         if (!name) {
             throw new Error(`${label} name is missing`);
         }
+        if (typeof name !== 'string') {
+            throw new Error(`${label} name should be a text value`);
+        }
         if (name.length < 4) {
             throw new Error(
                 `${label} name should be 4 characters long at least`
@@ -79,6 +84,9 @@ export class User {
         if (!email) {
             throw new Error('Email is missing');
         }
+        if (typeof email !== 'string') {
+            throw new Error('Email should be a text value');
+        }
         if (!this.emailValidator(email)) {
             throw new Error('Invalid email');
         }
@@ -86,6 +94,9 @@ export class User {
     private validatePassword(password: string): void {
         if (!password) {
             throw new Error('Password is missing');
+        }
+        if (typeof password !== 'string') {
+            throw new Error('Password should be a text value');
         }
         if (password.length < 10) {
             throw new Error('Password should be 10 characters long at least');
@@ -95,6 +106,9 @@ export class User {
         password: string,
         confirmPassword: string
     ): void {
+        if (typeof confirmPassword !== 'string') {
+            throw new Error('Confirm password should be a text value');
+        }
         if (password !== confirmPassword) {
             throw new Error('Passwords do not match');
         }
